@@ -1,0 +1,66 @@
+:root{
+  --light-w:120px;   /* ширина молний */
+  --gap:24px; 
+}
+
+html {
+	box-sizing: border-box;
+	font-family: "Jersey 15", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	background-color: black;
+	background-image: url(sky.jpg);
+	font-color: cornsilk;
+}
+
+header {
+  margin:0;
+  display:flex;
+  justify-content:center;   /* центрируем всё содержимое по горизонтали */
+}
+
+.site-header{
+  position:relative;
+  display:flex;
+  align-items:center;  /* молнии и логотип выравниваются по центру вертикали */
+  gap:var(--gap);
+  user-select:none;
+  cursor:default;
+}
+
+.logo-anim{
+  display:block;
+  width:700px;       /* увеличенный размер логотипа */
+  height:auto;
+  image-rendering:pixelated;
+  z-index:2;
+}
+ 
+.lightning{
+  width:var(--light-w);
+  height:auto;
+  opacity:0;
+  transition: opacity 150ms linear;
+  pointer-events:none;
+  image-rendering:pixelated;
+  z-index:1;
+}
+
+/* показать молнии при наведении или фокусе */
+.site-header:hover .lightning,
+.site-header:focus-within .lightning,
+.site-header.hovering .lightning {
+  opacity:1;
+}
+
+@media (max-width:600px){
+  .logo-anim{ width:300px; }
+  :root{ --light-w:80px; --gap:12px; }
+}
+
+.center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 30%;
+}
